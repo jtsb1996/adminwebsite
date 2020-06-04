@@ -21,24 +21,14 @@ div.tabs-center
     padding-bottom: 5px;
 }
 
-div.general
+input.title
 {
-    display:inline;
-}
-div.announcement
-{
-	border: 1px solid black;
-    text-align: center;
-    float:left;
-    width:49.5%;
-    position: relative;
+    width: 45%;
 }
 
-div.overview
+
+textarea.feedBackTextArea
 {
-	border: 1px solid black;
-    text-align: center;
-    float:left;
-    width:50%;
-    position: relative;
+    width: 45%;
+    height: 150px;
 }
