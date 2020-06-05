@@ -1,3 +1,12 @@
+<?php
+    // create connection
+	$con = mysqli_connect("localhost", "root", "", "tacmportal" )
+    or die ("Error, unable to connect to database");
+
+?>
+
+
+<!DOCTYPE html>
 <html>
     <head>
         <title>Program Calender</title>
@@ -9,13 +18,13 @@
         </div>
         <br/>
         <div class = "tabs">
-            <a href = "adminWebpage.html"><div class = "tabs-center">Homepage</div></a>
-            <a href = "programcalendar.html"><div class = "tabs-center">Program Calendar</div></a> 
-            <a href = "feedback.html"><div class = "tabs-center">Feed Back</div></a> 
-            <a href = "usermanagement.html"><div class = "tabs-center">User Management</div></a>
+            <a href = "adminWebpage.php"><div class = "tabs-center">Homepage</div></a>
+            <a href = "programcalendar.php"><div class = "tabs-center">Program Calendar</div></a> 
+            <a href = "feedback.php"><div class = "tabs-center">Feed Back</div></a> 
+            <a href = "usermanagement.php"><div class = "tabs-center">User Management</div></a>
             <div class = "tabs-center">Notification</div>
-            <a href = "messages.html"><div class = "tabs-center">Messages</div></a> 
-            <a href = "accountmanagement.html"><div class = "tabs-center">Account Management</div></a> 
+            <a href = "messages.php"><div class = "tabs-center">Messages</div></a> 
+            <a href = "accountmanagement.php"><div class = "tabs-center">Account Management</div></a> 
         </div>
         <br/><br/>
         <div class = "calendar">
