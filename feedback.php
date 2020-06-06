@@ -10,7 +10,7 @@
 <html>
     <head>
         <Title>Feedback</Title>
-        <link rel = "stylesheet" href = "feedback.css">
+        <link rel = "stylesheet" href = "general.css">
         <script type = "text/javascript" src = "feedback.js"></script>
     </head>
 
@@ -29,8 +29,8 @@
             <a href = "accountmanagement.php"><div class = "tabs-center">Account Management</div></a> 
         </div>
         
-        <br/>
-        <div id = "title" class = "title">
+        <br/><br/>
+        <div id = "title2" class = "title2">
             Creation of feedback form
         </div>
 
@@ -45,35 +45,36 @@
                 <button name = "create" id = "create"> Create New Feed-Back </button>
             </form>
         </div>
+        <br/><hr/><br/>
+        <div id = "title2" class = "title2">
+            Overview of individual feedback form
+        </div>
 
         <div>
-            Overview of individual feedback form
-            <div>
-                <table width = 100%>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Feed Back</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            // query the database to search for feedback
-                            // query the database
-                            $sql = $con->prepare ("SELECT * FROM events;");
-                            $result=$sql->execute();
-                            $sql->bind_result($title, $feedback);
+            <table border = "1" width = 100%>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Feed Back</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        // query the database to search for feedback
+                        // query the database
+                        $sql = $con->prepare ("SELECT * FROM feedback");
+                        $result=$sql->execute();
+                        $sql->bind_result($title, $feedback);
 
-                            while($sql->fetch()){
-                                echo"<tr>";
-                                printf("<td>%s</td>",$title);
-                                printf("<td>%s</td>",$feedback);
-                                echo"</tr>";
-                            }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+                        while($sql->fetch()){
+                            echo"<tr>";
+                            printf("<td>%s</td>",$title);
+                            printf("<td>%s</td>",$feedback);
+                            echo"</tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

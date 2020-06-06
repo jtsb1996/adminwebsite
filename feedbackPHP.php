@@ -12,5 +12,5 @@
 	$query->execute();
 
     // bring user back to orignial web page
-    echo "<script>alert('Feedback Created Succesfully!'); window.location.assign='feedback.php'</script>";
+    echo "<script>alert('Feedback Created Succesfully!'); window.location='feedback.php'</script>";
 ?>

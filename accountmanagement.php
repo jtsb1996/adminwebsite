@@ -10,7 +10,7 @@
 <html>
     <head>
         <title>Account Management</title>
-        <link rel = "stylesheet" href = "accountmanagement.css">
+        <link rel = "stylesheet" href = "general.css">
     </head>
     <body>
         <div id = "title" class = "title">

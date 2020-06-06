@@ -10,7 +10,7 @@
 <html>
     <head>
         <title>User Management</title>
-        <link rel = "stylesheet" href = "programcalendar.css">
+        <link rel = "stylesheet" href = "general.css">
         <script type = "text/javascript" src = "usermanagement.js"></script>
        
     </head>
@@ -30,8 +30,11 @@
             <a href = "accountmanagement.php"><div class = "tabs-center">Account Management</div></a> 
         </div>
         <br/><br/>
-        <div id = "buttons">
-            <form action="usermanagementPHP.php" method = "POST">
+        <div id = "title2" class = "title2">
+            Creation of new User Accounts
+        </div>
+        <div id = "creation">
+            <form action="usermanagementAddPHP.php" method = "POST">
                 UserName
                 <input type = "text" name = "newUserId" id = "newUserId" size = "30">
                 <br/>
@@ -39,12 +42,37 @@
                 <input type = "text" name = "newPassword" id = "newPassword" size = "30">
                 <br/>
                 <button name = "create" id = "create"> Create New Account </button>
+                
             </form>
-            
-            <button name = "edit" id = "edit" onclick = "editUser()"> Edit Exisiting Accounts </button>
         </div>
-        <div id = "information">
+        <br/><hr/><br/>
+        <div id = "edition">
+            <div id = "title2" class = "title2">
+                Current User Records
+            </div>
+            <table width = "100%" border = "1">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $sql = $con->prepare ("SELECT * FROM accounts");
+                        $result=$sql->execute();
+                        $sql->bind_result($user, $pw);
 
+                        while($sql->fetch()){
+                            echo"<tr>";
+                            printf("<td><form method = 'GET'><a href = 'usermanagementEdit.php?user=$user'>
+                                    %s<input type = 'hidden' name = 'user' value = $user></a></form></td>",$user);
+                            printf("<td>%s</td>",$pw);
+                            echo"</tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

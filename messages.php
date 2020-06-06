@@ -10,7 +10,7 @@
 <html>
     <head>
         <title>Inbox</title>
-        <link rel = "stylesheet" href = "messages.css">
+        <link rel = "stylesheet" href = "general.css">
     </head>
     <body>
         <div id = "title" class = "title">

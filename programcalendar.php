@@ -2,18 +2,17 @@
     // create connection
 	$con = mysqli_connect("localhost", "root", "", "tacmportal" )
     or die ("Error, unable to connect to database");
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>Program Calender</title>
-        <link rel = "stylesheet" href = "programcalendar.css">
+        <link rel = "stylesheet" href = "general.css">
+        <script type = "text/javascript" src = "programcalendar.js"></script>
     </head>
     <body>
-        <div id = "title" class = "title">
+        <div class = "title">
             Tribe Accelerator Cohort Management Portal
         </div>
         <br/>
@@ -27,19 +26,64 @@
             <a href = "accountmanagement.php"><div class = "tabs-center">Account Management</div></a> 
         </div>
         <br/><br/>
-        <div class = "calendar">
-            <div class = "month">
-                June
+        <div class = "title2">
+            Creation of Event Record
+        </div>
+        <div class = "eventform">
+                <form action="programcalendarAddPHP.php" method = "POST">
+                    <div class = "eventform-center">
+                    Event Name
+                    <input type = "text" name = "eventname" id = "eventname" size = "30">
+                    </div>
+                    <div class = "eventform-center">
+                    Event Date
+                    <input type = "text" name = "eventdate" id = "eventdate" size = "30">
+                    </div>
+                    <div class = "eventform-center">
+                    Event Start Time
+                    <input type = "text" name = "eventstime" id = "eventstime" size = "30">
+                    </div>
+                    <div class = "eventform-center">
+                    Event End Time
+                    <input type = "text" name = "eventetime" id = "eventetime" size = "30">
+                    </div>
+                    <div class = "eventbutton-center">
+                        <button name = "addevent" id = "addevent"> Add Event Record</button>
+                    </div>
+                </form>
+        </div>
+        <br/><br/>
+        <div id = "edition">
+            <div id = "title2" class = "title2">
+                Current Event Records
             </div>
-            <div class = "days">
-                <div class = "mon">monday</div>
-                <div class = "mon">tuesday</div>
-                <div class = "mon">wednesday</div>
-                <div class = "mon">thursday</div>
-                <div class = "mon">friday</div>
-                <div class = "mon">saturday</div>
-                <div class = "mon">sunday</div>
-            </div>
+            <table class = "eventTable" id = "eventTable" >
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Date</th>
+                        <th>Event Start Time</th>
+                        <th>Event End Time</th>
+                    </tr>
+                </thead>
+                <tbody text-align = "center">
+                    <?php
+                        $sql = $con->prepare ("SELECT * FROM eventtable");
+                        $result=$sql->execute();
+                        $sql->bind_result($eventname, $eventdate, $eventstarttime, $eventendtime);
+
+                        while($sql->fetch()){
+                            echo"<tr>";
+                            printf("<td><form method = 'GET'><a href = 'programcalendarEditDelete.php?eventname=$eventname'>
+                                    %s</td><input type = 'hidden' name = 'eventname' value = $eventname></a></form>",$eventname);
+                            printf("<td>%s</td>",$eventdate);
+                            printf("<td>%s</td>",$eventstarttime);
+                            printf("<td>%s</td>",$eventendtime);
+                            echo"</tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

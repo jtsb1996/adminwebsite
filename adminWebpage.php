@@ -10,7 +10,7 @@
 <html>
     <head>
         <title>Admin Interface</title>
-        <link rel = "stylesheet" href = "adminWebpage.css">
+        <link rel = "stylesheet" href = "general.css">
         <script type = "text/javascript" src = "adminWebpage.js"></script>
     </head>
 
